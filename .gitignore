@@ -1,6 +1,5 @@
 
 # dependencies
-mern-todo-backend/node_modules
 mern-todo-client/node_modules
 
 # testing
@@ -10,5 +9,4 @@ mern-todo-client/node_modules
 mern-todo-client/public
 
 # database
-mern-todo-backend/data
 
