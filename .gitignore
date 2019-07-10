@@ -1,13 +1,13 @@
 
 # dependencies
-mern-todo-client/node_modules
 mern-todo-be/node_modules
+mern-todo-client/node_modules
 
 # testing
 
 
-# production
-mern-todo-client/public
+# production build
+mern-todo-client/build
 
 # database
 mern-todo-be/data
