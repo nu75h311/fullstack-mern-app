@@ -6,7 +6,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nu75h311/fullstack-mern-app.git"
+  },
+  "keywords": ["mongodb", "express"],
   "author": "",
   "license": "ISC",
   "dependencies": {

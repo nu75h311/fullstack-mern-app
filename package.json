@@ -7,9 +7,8 @@
     "postinstall": "run-s -n submodule.install:*",
     "submodule.install:backend": "cd mern-todo-be && npm install",
     "submodule.install:client": "cd mern-todo-client && npm install",
-    "setupdb": "run-p -n database:*",
-    "database:server": "md mern-todo-be\\data\\db && mongod --dbpath=./mern-todo-be/data/db",
-    "database:create": "mongo && use todos",
+    "db:setup": "md mern-todo-be\\data\\db && mongod --dbpath=./mern-todo-be/data/db",
+    "db:server": "mongod --dbpath=./mern-todo-be/data/db",
     "start": "run-p -l start:*",
     "start:server": "cd mern-todo-be && nodemon server.js",
     "start:client": "cd mern-todo-client && npm start"
