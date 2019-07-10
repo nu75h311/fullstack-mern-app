@@ -1,5 +1,6 @@
 
 # dependencies
+/node_modules
 mern-todo-be/node_modules
 mern-todo-client/node_modules
 

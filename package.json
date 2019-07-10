@@ -1,0 +1,33 @@
+{
+  "name": "fullstack-mern-app",
+  "version": "1.0.0",
+  "description": "MERN stack study",
+  "main": "index.js",
+  "scripts": {
+    "postinstall": "run-s -n submodule.install:*",
+    "submodule.install:backend": "cd mern-todo-be && npm install",
+    "submodule.install:client": "cd mern-todo-client && npm install",
+    "setupdb": "run-p -n database:*",
+    "database:server": "md mern-todo-be\\data\\db && mongod --dbpath=./mern-todo-be/data/db",
+    "database:create": "mongo && use todos",
+    "start": "run-p -l start:*",
+    "start:server": "cd mern-todo-be && nodemon server.js",
+    "start:client": "cd mern-todo-client && npm start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nu75h311/fullstack-mern-app.git"
+  },
+  "keywords": [
+    "mern"
+  ],
+  "author": "Adriano Tanoue",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nu75h311/fullstack-mern-app/issues"
+  },
+  "homepage": "https://github.com/nu75h311/fullstack-mern-app#readme",
+  "devDependencies": {
+    "npm-run-all": "^4.1.5"
+  }
+}
