@@ -10,7 +10,10 @@
     "type": "git",
     "url": "git+https://github.com/nu75h311/fullstack-mern-app.git"
   },
-  "keywords": ["mongodb", "express"],
+  "keywords": [
+    "mongodb",
+    "express"
+  ],
   "author": "",
   "license": "ISC",
   "dependencies": {
