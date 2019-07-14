@@ -1,12 +1,13 @@
-const express = require('express');
+const debug = require('debug')('server:debug');
+import config from 'config';
+import express from 'express';
 const app = express();
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const todoRoutes = express.Router();
-const PORT = 4000;
 
-let Todo = require('./todo.model');
+let Todo = require('../todo.model');
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -67,6 +68,6 @@ todoRoutes.route('/update/:id').post(function (req, res) {
 
 app.use('/todos', todoRoutes);
 
-app.listen(PORT, function () {
-    console.log("Server is running on Port: " + PORT);
+app.listen(config.get('port'), () => {
+    console.log(`server is running on port ${config.get('port')} and in ${config.get('name')} mode`);
 });
