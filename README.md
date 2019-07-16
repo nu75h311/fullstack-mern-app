@@ -5,6 +5,18 @@
 [Node.js](https://nodejs.org) with npm accessible from the PATH  
 [MongoDB](https://docs.mongodb.com/manual/administration/install-community/) with mongo commands (`mongo`, `mongod`) accessible from the PATH
 
+## Using
+
+# backend
+
+- [express](https://expressjs.com/): a popular Node JS Server framework
+- [mongoose](https://www.npmjs.com/package/mongoose): an elegant object modeling tool for MongoDB in Node JS.
+- [nodemon](https://www.npmjs.com/package/nodemon): dev mode to restart the application once the source code has changed.  
+- [babel](https://babeljs.io/): enables JavaScript features that are not supported in Node.js yet.
+- [config](https://www.npmjs.com/package/config): helps setting up environments (development, test, and production).
+- [debug](https://www.npmjs.com/package/debug): so logs are only shown in test or development environments.
+- [supertest](https://www.npmjs.com/package/supertest): a HTTP server testing library.
+
 ## Start whole application
 
 To setup the MongoDB database for the first time, run (in order):
