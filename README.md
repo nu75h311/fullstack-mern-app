@@ -2,7 +2,7 @@
 
 ## Requires
 
-[Node.js](https://nodejs.org) with npm accessible from the PATH  
+[Node.js & npm](https://nodejs.org)  
 [MongoDB](https://docs.mongodb.com/manual/administration/install-community/) with mongo commands (`mongo`, `mongod`) accessible from the PATH
 
 ## Using
