@@ -2,53 +2,53 @@ import { Router } from 'express';
 
 const router = Router();
 
-let Todo = require('../models/todo.model');
+// let Todo = require('../models/todo');
 
-router.get('/' , (req, res) => {
-    Todo.find(function (err, todos) {
-        if (err) {
-            console.log(err);
-        } else {
-            res.json(todos);
-        }
-    });
+router.get('/', async (req, res) => {
+    const todos = await req.context.models.Todo.find();
+    return res.send(todos);
 });
 
-router.get('/:id' , (req, res) => {
-    let id = req.params.id;
-    Todo.findById(id, function (err, todo) {
-        res.json(todo);
-    });
-});
-
-router.post('/add' , (req, res) => {
-    let todo = new Todo(req.body);
-    todo.save()
-        .then(todo => {
-            res.status(200).json({ 'todo': 'todo added successfully' });
-        })
+router.get('/:todoId', async (req, res) => {
+    const todo = await req.context.models.Todo.findById(
+        req.params.todoId,
+    )
         .catch(err => {
-            res.status(400).send('adding new todo failed');
+            res.status(404).send("data not found");
         });
+    return res.send(todo);
 });
 
-router.post('/update/:id' , (req, res) => {
-    Todo.findById(req.params.id, function (err, todo) {
-        if (!todo)
-            res.status(404).send("data is not found");
-        else
-            todo.todo_description = req.body.todo_description;
-        todo.todo_responsible = req.body.todo_responsible;
-        todo.todo_priority = req.body.todo_priority;
-        todo.todo_completed = req.body.todo_completed;
-
-        todo.save().then(todo => {
-            res.json('Todo updated!');
-        })
-            .catch(err => {
-                res.status(400).send("Update not possible");
-            });
+router.post('/add', async (req, res) => {
+    const todo = await req.context.models.Todo.create({
+        todo_description: req.body.todo_description,
+        todo_responsible: req.body.todo_responsible,
+        todo_priority: req.body.todo_priority,
+        todo_completed: req.body.todo_completed,
     });
+
+    return res.status(200).send(todo);
+});
+
+router.post('/update/:todoId', async (req, res) => {
+    const todo = await req.context.models.Todo.findById(
+        req.params.todoId,
+    )
+        .catch(err => {
+            res.status(404).send("data not found");
+        });
+
+    todo.todo_description = req.body.todo_description;
+    todo.todo_responsible = req.body.todo_responsible;
+    todo.todo_priority = req.body.todo_priority;
+    todo.todo_completed = req.body.todo_completed;
+
+    todo.save().then(todo => {
+        res.status(200).send('Todo updated!');
+    })
+        .catch(err => {
+            res.status(400).send("Update not possible");
+        });
 });
 
 export default router;
