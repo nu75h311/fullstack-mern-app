@@ -2,8 +2,6 @@ import { Router } from 'express';
 
 const router = Router();
 
-// let Todo = require('../models/todo');
-
 router.get('/', async (req, res) => {
     const todos = await req.context.models.Todo.find();
     return res.send(todos);
