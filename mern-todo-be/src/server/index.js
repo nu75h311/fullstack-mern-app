@@ -21,6 +21,12 @@ app.use(async (req, res, next) => {
     next();
 });
 
+
+
+app.get('/todos/what', async (req, res) => {
+    return res.json("what");
+});
+
 // Routes
 
 app.use('/todos', routes.todo);

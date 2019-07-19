@@ -12,8 +12,13 @@ const connectDb = () => {
     })
 };
 
+const disconnectDb = async () => {
+    await mongoose.disconnect();
+    console.log("MongoDB database diconnected");
+}
+
 const models = { Todo };
 
-export { connectDb };
+export { connectDb, disconnectDb };
 
 export default models;
