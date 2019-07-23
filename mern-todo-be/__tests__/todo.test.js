@@ -7,12 +7,18 @@ describe("GET /todos ", () => {
     beforeEach(async () => {
         connectDb().then(async () => {
             app.server;
-        });
+        })
+        .catch(async (err) => {
+            console.log('App starting error:', err.stack);
+            await app.server.close();
+            await disconnectDb();
+            // process.exit(1);
+        });;
     });
 
     afterEach(async () => {
-        await disconnectDb();
         await app.server.close();
+        await disconnectDb();
     });
 
     test("It should respond with an array of todos", async () => {
