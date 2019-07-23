@@ -21,14 +21,12 @@ app.use(async (req, res, next) => {
     next();
 });
 
-
-
-app.get('/todos/what', async (req, res) => {
-    return res.json("what");
-});
-
 // Routes
 
 app.use('/todos', routes.todo);
+
+app.server = app.listen(process.env.PORT, () => {
+    console.log(`Server is running on port ${process.env.PORT} in ${process.env.NAME} mode`);
+});
 
 export default app;
