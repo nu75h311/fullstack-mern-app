@@ -3,19 +3,18 @@ import mongoose from 'mongoose';
 import Todo from './todo';
 
 const connectDb = () => {
+  mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true });
+  const { connection } = mongoose;
 
-    mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true });
-    const connection = mongoose.connection;
-
-    return connection.once('open', () => {
-        console.log("MongoDB database connection established successfully");
-    })
+  return connection.once('open', () => {
+    console.log('MongoDB database connection established successfully');
+  });
 };
 
 const disconnectDb = async () => {
-    await mongoose.connection.close();
-    console.log("MongoDB database diconnected");
-}
+  await mongoose.connection.close();
+  console.log('MongoDB database diconnected');
+};
 
 const models = { Todo };
 

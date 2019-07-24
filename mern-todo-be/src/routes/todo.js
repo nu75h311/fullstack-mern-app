@@ -3,50 +3,50 @@ import { Router } from 'express';
 const router = Router();
 
 router.get('/', async (req, res) => {
-    const todos = await req.context.models.Todo.find();
-    return res.send(todos);
+  const todos = await req.context.models.Todo.find();
+  return res.send(todos);
 });
 
 router.get('/:todoId', async (req, res) => {
-    const todo = await req.context.models.Todo.findById(
-        req.params.todoId,
-    )
-        .catch(err => {
-            res.status(404).send("data not found");
-        });
-    return res.send(todo);
+  const todo = await req.context.models.Todo.findById(
+    req.params.todoId,
+  )
+    .catch((err) => {
+      res.status(404).send('data not found');
+    });
+  return res.send(todo);
 });
 
 router.post('/add', async (req, res) => {
-    const todo = await req.context.models.Todo.create({
-        todo_description: req.body.todo_description,
-        todo_responsible: req.body.todo_responsible,
-        todo_priority: req.body.todo_priority,
-        todo_completed: req.body.todo_completed,
-    });
+  const todo = await req.context.models.Todo.create({
+    todo_description: req.body.todo_description,
+    todo_responsible: req.body.todo_responsible,
+    todo_priority: req.body.todo_priority,
+    todo_completed: req.body.todo_completed,
+  });
 
-    return res.status(200).send(todo);
+  return res.status(200).send(todo);
 });
 
 router.post('/update/:todoId', async (req, res) => {
-    const todo = await req.context.models.Todo.findById(
-        req.params.todoId,
-    )
-        .catch(err => {
-            res.status(404).send("data not found");
-        });
+  const todo = await req.context.models.Todo.findById(
+    req.params.todoId,
+  )
+    .catch((err) => {
+      res.status(404).send('data not found');
+    });
 
-    todo.todo_description = req.body.todo_description;
-    todo.todo_responsible = req.body.todo_responsible;
-    todo.todo_priority = req.body.todo_priority;
-    todo.todo_completed = req.body.todo_completed;
+  todo.todo_description = req.body.todo_description;
+  todo.todo_responsible = req.body.todo_responsible;
+  todo.todo_priority = req.body.todo_priority;
+  todo.todo_completed = req.body.todo_completed;
 
-    todo.save().then(todo => {
-        res.status(200).send('Todo updated!');
-    })
-        .catch(err => {
-            res.status(400).send("Update not possible");
-        });
+  todo.save().then((todo) => {
+    res.status(200).send('Todo updated!');
+  })
+    .catch((err) => {
+      res.status(400).send('Update not possible');
+    });
 });
 
 export default router;
