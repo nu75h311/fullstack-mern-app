@@ -1,5 +1,5 @@
-import todo from './todo';
+import todoRouter from './todoRoute';
 
 export default {
-  todo,
+  todoRouter,
 };

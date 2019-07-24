@@ -1,9 +1,9 @@
 import mongoose from 'mongoose';
 
-import Todo from './todo';
+import Todo from './todoModel';
 
 const connectDb = () => {
-  mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true });
+  mongoose.connect(process.env.DB_URL, { useNewUrlParser: true });
   const { connection } = mongoose;
 
   return connection.once('open', () => {

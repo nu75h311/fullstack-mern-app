@@ -1,13 +1,13 @@
 import { Router } from 'express';
 
-const router = Router();
+const todoRouter = Router();
 
-router.get('/', async (req, res) => {
+todoRouter.get('/', async (req, res) => {
   const todos = await req.context.models.Todo.find();
   return res.send(todos);
 });
 
-router.get('/:todoId', async (req, res) => {
+todoRouter.get('/:todoId', async (req, res) => {
   const todo = await req.context.models.Todo.findById(
     req.params.todoId,
   )
@@ -17,7 +17,7 @@ router.get('/:todoId', async (req, res) => {
   return res.send(todo);
 });
 
-router.post('/add', async (req, res) => {
+todoRouter.post('/add', async (req, res) => {
   const todo = await req.context.models.Todo.create({
     todo_description: req.body.todo_description,
     todo_responsible: req.body.todo_responsible,
@@ -28,7 +28,7 @@ router.post('/add', async (req, res) => {
   return res.status(200).send(todo);
 });
 
-router.post('/update/:todoId', async (req, res) => {
+todoRouter.post('/update/:todoId', async (req, res) => {
   const todo = await req.context.models.Todo.findById(
     req.params.todoId,
   )
@@ -49,4 +49,4 @@ router.post('/update/:todoId', async (req, res) => {
     });
 });
 
-export default router;
+export default todoRouter;

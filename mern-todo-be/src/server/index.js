@@ -1,4 +1,3 @@
-import 'dotenv/config';
 import express from 'express';
 import cors from 'cors';
 
@@ -23,7 +22,7 @@ app.use(async (req, res, next) => {
 
 // Routes
 
-app.use('/todos', routes.todo);
+app.use('/todos', routes.todoRouter);
 
 app.server = app.listen(process.env.PORT, () => {
   console.log(`Server is running on port ${process.env.PORT} in ${process.env.NAME} mode`);
