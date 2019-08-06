@@ -5,7 +5,7 @@ import { connectDb, disconnectDb } from '../src/models';
 describe('GET /todos ', () => {
   beforeEach(async () => {
     connectDb().then(async () => {
-      app.server;
+      await app.server;
     })
       .catch(async (err) => {
         console.log('App starting error:', err.stack);
