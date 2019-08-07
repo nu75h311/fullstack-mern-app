@@ -2,6 +2,7 @@
     "env": {
         "es6": true,
         "node": true,
+        "mocha": true,
         "jest": true
     },
     "extends": [
@@ -16,6 +17,21 @@
         "sourceType": "module"
     },
     "rules": {
-        "no-console": "off"
+        "no-console": "off",
+        "import/no-extraneous-dependencies": [
+            "error",
+            {
+                "devDependencies": [
+                    "src/unit_tests/**/*Tests.js",
+                    "__tests__/**/*.test.js"
+                ]
+            }
+        ],
+        "no-unused-vars": [
+            "error",
+            {
+                "varsIgnorePattern": "should"
+            }
+        ]
     }
 }
