@@ -1,5 +1,6 @@
+import usersController from './usersController';
 import todosController from './todosController';
 
 export default {
-  todosController,
+  usersController, todosController,
 };

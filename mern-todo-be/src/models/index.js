@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 
+import User from './userModel';
 import Todo from './todoModel';
 
 const connectDb = () => {
@@ -16,7 +17,7 @@ const disconnectDb = async () => {
   console.log('MongoDB database diconnected');
 };
 
-const models = { Todo };
+const models = { User, Todo };
 
 export { connectDb, disconnectDb };
 

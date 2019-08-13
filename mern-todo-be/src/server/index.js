@@ -23,6 +23,7 @@ app.use(async (req, res, next) => {
 // Routes
 
 app.use('/todos', routes.todoRouter);
+app.use('/users', routes.userRouter);
 
 app.server = app.listen(process.env.PORT, () => {
   console.log(`Server is running on port ${process.env.PORT} in ${process.env.NAME} mode`);
