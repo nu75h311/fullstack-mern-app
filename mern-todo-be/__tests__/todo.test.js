@@ -23,7 +23,7 @@ describe('GET /todos ', () => {
     await app.server.close();
     await disconnectDb();
 
-    //try this after post test:
+    // try this after post test:
     models.Todo.deleteMany({}).exec();
   });
 

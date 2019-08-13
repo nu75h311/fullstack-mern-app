@@ -4,7 +4,6 @@ mern-todo-be/node_modules
 mern-todo-client/node_modules
 
 # environments
-mern-todo-be/.env
 
 # testing
 
@@ -14,3 +13,6 @@ mern-todo-client/build
 
 # database
 mern-todo-be/data
+
+# auth config
+mern-todo-be/src/server/_config.js

@@ -9,4 +9,13 @@ const usersController = controllers.usersController(User);
 userRouter.route('/')
   .get(usersController.getAll);
 
+userRouter.route('/login')
+  .get(usersController.login);
+
+userRouter.route('/auth/linkedin')
+  .get(usersController.authLinkedin);
+
+userRouter.route('/auth/linkedin/callback')
+  .get(usersController.authLinkedinCallback);
+
 export default userRouter;

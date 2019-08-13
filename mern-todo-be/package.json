@@ -25,13 +25,17 @@
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.17.1",
-    "mongoose": "^5.5.15"
+    "express-session": "^1.16.2",
+    "mongoose": "^5.5.15",
+    "passport": "^0.4.0",
+    "passport-linkedin-oauth2": "^2.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.5.4",
     "@babel/node": "^7.5.0",
     "@babel/preset-env": "^7.5.4",
     "@babel/register": "^7.5.5",
+    "acorn": "^6.0.0",
     "babel-jest": "^24.8.0",
     "eslint": "^5.16.0",
     "eslint-config-airbnb-base": "^13.2.0",

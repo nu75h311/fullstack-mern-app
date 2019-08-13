@@ -1,12 +1,14 @@
 import express from 'express';
 import cors from 'cors';
+import passport from 'passport';
+import session from 'express-session';
 
 import routes from '../routes';
 import models from '../models';
 
 const app = express();
 
-// Application-Level Middleware
+// Application-Level middleware
 
 app.use(cors());
 
@@ -19,6 +21,16 @@ app.use(async (req, res, next) => {
   };
   next();
 });
+
+// Authorization middleware
+
+app.use(session({
+  secret: 'keyboard cat',
+  resave: true,
+  saveUninitialized: true,
+}));
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Routes
 
