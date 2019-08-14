@@ -25,7 +25,7 @@ app.use(async (req, res, next) => {
 // Authorization middleware
 
 app.use(session({
-  secret: 'keyboard cat',
+  secret: 'todos',
   resave: true,
   saveUninitialized: true,
 }));
@@ -34,6 +34,7 @@ app.use(passport.session());
 
 // Routes
 
+app.use('/auth', routes.authRouter);
 app.use('/todos', routes.todoRouter);
 app.use('/users', routes.userRouter);
 

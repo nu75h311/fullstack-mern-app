@@ -4,7 +4,10 @@ import User from './userModel';
 import Todo from './todoModel';
 
 const connectDb = () => {
-  mongoose.connect(process.env.DB_URL, { useNewUrlParser: true });
+  mongoose.connect(process.env.DB_URL, {
+    useNewUrlParser: true,
+    useFindAndModify: false,
+  });
   const { connection } = mongoose;
 
   return connection.once('open', () => {

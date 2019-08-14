@@ -5,8 +5,8 @@ const serializer = (user, done) => {
   done(null, user.id);
 };
 
-const deserializer = (id, done) => {
-  models.User.findById(id, (err, user) => {
+const deserializer = (userId, done) => {
+  models.User.findById(userId, (err, user) => {
     done(err, user);
   });
 };

@@ -15,4 +15,4 @@ mern-todo-client/build
 mern-todo-be/data
 
 # auth config
-mern-todo-be/src/server/_config.js
+mern-todo-be/src/server/auth/_config.js

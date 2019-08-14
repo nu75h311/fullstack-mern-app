@@ -5,7 +5,10 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  someId: {
+  passportStrategyId: {
+    type: String,
+  },
+  email: {
     type: String,
   },
 });
