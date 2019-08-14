@@ -12,12 +12,25 @@ const usersController = (User) => {
   };
 
   const login = async (req, res) => {
-    res.send('Go back and register!');
+    res.send({ for_now_go_to: 'http://127.0.0.1:4000/auth/linkedin' });
+  };
+
+  const getProfile = async (req, res, next) => {
+    if (req.user) {
+      const user = await User.findById(
+        req.user.id,
+      );
+      res.send(user);
+    } else {
+      res.redirect('./login');
+    }
+    return next();
   };
 
   return {
     getAll,
     login,
+    getProfile,
   };
 };
 

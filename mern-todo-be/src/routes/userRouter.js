@@ -12,4 +12,7 @@ userRouter.route('/')
 userRouter.route('/login')
   .get(usersController.login);
 
+userRouter.route('/profile')
+  .get(usersController.getProfile);
+
 export default userRouter;

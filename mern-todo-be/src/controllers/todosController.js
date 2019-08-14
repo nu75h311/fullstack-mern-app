@@ -1,20 +1,25 @@
 /* eslint no-underscore-dangle: ["error", { "allow": ["_id"] }] */
 
 const todosController = (Todo) => {
-  const getAll = async (req, res) => {
-    const { query } = req;
-    const todos = await Todo.find(query)
-      .catch((err) => {
-        res.status(500).send(`Something went wrong: ${err}`);
+  const getAll = async (req, res, next) => {
+    if (req.user) {
+      const { query } = req;
+      const todos = await Todo.find(query)
+        .catch((err) => {
+          res.status(500).send(`Something went wrong: ${err}`);
+        });
+      const returnTodos = todos.map((todo) => {
+        const newTodo = todo.toJSON();
+        newTodo.links = {};
+        newTodo.links.self = `http://${req.headers.host}/todos/${todo._id}`;
+        return newTodo;
       });
-    const returnTodos = todos.map((todo) => {
-      const newTodo = todo.toJSON();
-      newTodo.links = {};
-      newTodo.links.self = `http://${req.headers.host}/todos/${todo._id}`;
-      return newTodo;
-    });
-    res.status(200);
-    return res.send(returnTodos);
+      res.status(200);
+      res.send(returnTodos);
+    } else {
+      res.redirect('../users/login');
+    }
+    return next();
   };
 
   const create = async (req, res) => {
