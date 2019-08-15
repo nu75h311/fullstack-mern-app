@@ -4,6 +4,8 @@ const todosController = (Todo) => {
   const getAll = async (req, res, next) => {
     if (req.user) {
       const { query } = req;
+      query.creatorId = req.user.passportStrategyId;
+      console.log(query);
       const todos = await Todo.find(query)
         .catch((err) => {
           res.status(500).send(`Something went wrong: ${err}`);
@@ -23,13 +25,14 @@ const todosController = (Todo) => {
   };
 
   const create = async (req, res) => {
+    const newTodo = req.body;
+    newTodo.creatorId = req.user.passportStrategyId;
     const todo = await Todo.create(
-      req.body,
-    );
-    if (!req.body.todo_description) {
-      res.status(400);
-      return res.send('Description is required');
-    }
+      newTodo,
+    )
+      .catch((err) => {
+        res.status(400).send(`Something went wrong: ${err}`);
+      });
     res.status(201);
     return res.send(todo);
   };
@@ -48,19 +51,19 @@ const todosController = (Todo) => {
 
   const getOne = async (req, res) => {
     const returnTodo = req.todo.toJSON();
-    const responsible = req.todo.todo_responsible.replace(' ', '%20');
+    const responsible = req.todo.responsible.replace(' ', '%20');
     returnTodo.links = {};
-    returnTodo.links.FilterByThisResponsible = `http://${req.headers.host}/todos/?todo_responsible=${responsible}`;
+    returnTodo.links.FilterByThisResponsible = `http://${req.headers.host}/todos/?responsible=${responsible}`;
 
     res.send(returnTodo);
   };
 
   const replaceOne = async (req, res) => {
     const { todo } = await req;
-    todo.todo_description = req.body.todo_description;
-    todo.todo_responsible = req.body.todo_responsible;
-    todo.todo_priority = req.body.todo_priority;
-    todo.todo_completed = req.body.todo_completed;
+    todo.description = req.body.description;
+    todo.responsible = req.body.responsible;
+    todo.priority = req.body.priority;
+    todo.completed = req.body.completed;
 
     todo.save().then(() => {
       res.status(200).send('Todo updated!');

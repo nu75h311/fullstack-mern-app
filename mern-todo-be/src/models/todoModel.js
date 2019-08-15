@@ -1,18 +1,24 @@
 import mongoose from 'mongoose';
 
 const todoSchema = new mongoose.Schema({
-  todo_description: {
+  description: {
     type: String,
     required: true,
   },
-  todo_responsible: {
+  responsible: {
     type: String,
   },
-  todo_priority: {
+  priority: {
     type: String,
+    required: true,
   },
-  todo_completed: {
+  completed: {
     type: Boolean,
+    default: false,
+  },
+  creatorId: {
+    type: String,
+    required: true,
   },
 });
 

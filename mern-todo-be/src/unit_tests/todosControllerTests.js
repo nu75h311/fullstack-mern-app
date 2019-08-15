@@ -9,8 +9,8 @@ describe('Todos Controller Tests:', () => {
 
       const req = {
         body: {
-          todo_responsible: 'Adriano',
-          todo_priority: 'Medium',
+          responsible: 'Adriano',
+          priority: 'Medium',
         },
       };
 
