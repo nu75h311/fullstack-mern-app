@@ -5,7 +5,7 @@ const authController = () => {
   const authLinkedin = passportLinkedIn.authenticate('linkedin');
 
   const authLinkedinCallback = passportLinkedIn.authenticate('linkedin', {
-    successRedirect: '/users/profile',
+    successRedirect: 'http://localhost:3000',
     failureRedirect: '/login',
   });
 
