@@ -11,9 +11,9 @@ const app = express();
 // Application-Level middleware
 
 app.use(cors({
-  origin: "http://localhost:3000", // allow to server to accept request from different origin
-  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-  credentials: true // allow session cookie from browser to pass through
+  origin: 'http://127.0.0.1:3000', // allow to server to accept request from different origin
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  credentials: true, // allow session cookie from browser to pass through
 }));
 
 app.use(express.json());
@@ -33,6 +33,7 @@ app.use(session({
   resave: true,
   saveUninitialized: true,
 }));
+
 app.use(passport.initialize());
 app.use(passport.session());
 

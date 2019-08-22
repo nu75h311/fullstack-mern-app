@@ -6,9 +6,13 @@ const serializer = (user, done) => {
 };
 
 const deserializer = (userId, done) => {
-  models.User.findById(userId, (err, user) => {
-    done(err, user);
-  });
+  models.User.findById(userId)
+    .then((user) => {
+      done(null, user);
+    })
+    .catch(() => {
+      done(new Error('Failed to deserialize an user'));
+    });
 };
 
 export default () => {

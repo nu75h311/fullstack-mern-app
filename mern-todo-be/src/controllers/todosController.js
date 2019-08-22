@@ -2,7 +2,7 @@
 
 const todosController = (Todo) => {
   const getAll = async (req, res, next) => {
-    // if (req.user) {
+    if (req.user) {
       const { query } = req;
       query.creatorId = req.user.passportStrategyId;
       console.log(query);
@@ -18,9 +18,9 @@ const todosController = (Todo) => {
       });
       res.status(200);
       res.send(returnTodos);
-    // } else {
-    //   res.redirect('../users/login');
-    // }
+    } else {
+      res.redirect('../users/login');
+    }
     return next();
   };
 

@@ -11,4 +11,13 @@ authRouter.route('/linkedin')
 authRouter.route('/linkedin/callback')
   .get(authController.authLinkedinCallback);
 
+authRouter.route('/login/success')
+  .get(authController.loginSuccess);
+
+authRouter.route('/login/failed')
+  .get(authController.loginFailed);
+
+authRouter.route('/logout')
+  .get(authController.logout);
+
 export default authRouter;

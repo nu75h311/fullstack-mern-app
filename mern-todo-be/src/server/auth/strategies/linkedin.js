@@ -11,7 +11,8 @@ passport.use(new LinkedInStrategy({
   callbackURL: ids.linkedin.callbackURL,
   scope: ['r_emailaddress', 'r_liteprofile'],
   state: true,
-}, (accessToken, refreshToken, profile, done) => {
+},
+async (accessToken, refreshToken, profile, done) => {
   const searchQuery = {
     passportStrategyId: profile.id,
   };
@@ -27,7 +28,7 @@ passport.use(new LinkedInStrategy({
     upsert: true,
   };
 
-  process.nextTick(() => {
+  await process.nextTick(() => {
     models.User.findOneAndUpdate(searchQuery, updates, options, (err, user) => {
       if (err) {
         return done(err);
