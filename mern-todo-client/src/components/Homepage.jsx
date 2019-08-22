@@ -7,8 +7,6 @@ export default class HomePage extends Component {
     user: PropTypes.shape({
       name: PropTypes.string,
       profileImageUrl: PropTypes.string,
-      twitterId: PropTypes.string,
-      screenName: PropTypes.string,
       _id: PropTypes.string
     })
   };

@@ -2,6 +2,8 @@ import express from 'express';
 import cors from 'cors';
 import passport from 'passport';
 import session from 'express-session';
+import cookieParser from 'cookie-parser';
+// import cookieSession from 'cookie-session';
 
 import routes from '../routes';
 import models from '../models';
@@ -26,7 +28,17 @@ app.use(async (req, res, next) => {
   next();
 });
 
+// app.use(
+//   cookieSession({
+//     name: 'session',
+//     keys: 'COOKIE_KEY',
+//     maxAge: 24 * 60 * 60 * 100,
+//   }),
+// );
+
 // Authorization middleware
+
+app.use(cookieParser());
 
 app.use(session({
   secret: 'todos',

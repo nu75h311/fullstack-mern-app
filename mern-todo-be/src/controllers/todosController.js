@@ -26,7 +26,8 @@ const todosController = (Todo) => {
 
   const create = async (req, res) => {
     const newTodo = req.body;
-    newTodo.creatorId = req.user.passportStrategyId;
+    console.log(newTodo);
+    // newTodo.creatorId = req.body.user.passportStrategyId;
     const todo = await Todo.create(
       newTodo,
     )
