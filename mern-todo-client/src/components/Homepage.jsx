@@ -32,7 +32,7 @@ export default class HomePage extends Component {
     })
       .then(response => {
         if (response.status === 200) return response.json();
-        throw new Error("failed to authenticate user");
+        throw new Error("Failed to authenticate user");
       })
       .then(responseJson => {
         this.setState({
@@ -61,7 +61,7 @@ export default class HomePage extends Component {
             <h1>Welcome!</h1>
           ) : (
               <div>
-                <h1>You have login succcessfully!</h1>
+                <h1>You have logged in succcessfully!</h1>
                 <h2>Welcome {this.state.user.name}!</h2>
               </div>
             )}
