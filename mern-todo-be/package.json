@@ -37,7 +37,7 @@
     "@babel/node": "^7.5.0",
     "@babel/preset-env": "^7.5.4",
     "@babel/register": "^7.5.5",
-    "acorn": "^6.0.0",
+    "acorn": "^6.4.1",
     "babel-jest": "^24.8.0",
     "eslint": "^5.16.0",
     "eslint-config-airbnb-base": "^13.2.0",
